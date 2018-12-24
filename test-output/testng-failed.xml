@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Default Suite]" guice-stage="DEVELOPMENT">
+  <test name="comNeoBank(failed)">
+    <classes>
+      <class name="com.neo.testcases.LoginTestCases">
+        <methods>
+          <include name="TC1" invocation-numbers="0"/>
+          <include name="initialize"/>
+          <include name="extent_reports"/>
+        </methods>
+      </class> <!-- com.neo.testcases.LoginTestCases -->
+    </classes>
+  </test> <!-- comNeoBank(failed) -->
+</suite> <!-- Failed suite [Default Suite] -->

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2018-12-20T10:57:13Z" name="Default Suite" finished-at="2018-12-20T10:57:39Z" duration-ms="26330">
+    <groups>
+    </groups>
+    <test started-at="2018-12-20T10:57:13Z" name="comNeoBank" finished-at="2018-12-20T10:57:39Z" duration-ms="26330">
+      <class name="com.neo.testcases.LoginTestCases">
+        <test-method is-config="true" signature="extent_reports()[pri:0, instance:com.neo.testcases.LoginTestCases@61df66b6]" started-at="2018-12-20T16:27:12Z" name="extent_reports" finished-at="2018-12-20T16:27:13Z" duration-ms="417" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- extent_reports -->
+        <test-method is-config="true" signature="initialize()[pri:0, instance:com.neo.testcases.LoginTestCases@61df66b6]" started-at="2018-12-20T16:27:13Z" name="initialize" finished-at="2018-12-20T16:27:34Z" duration-ms="21305" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initialize -->
+        <test-method signature="TC1(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.neo.testcases.LoginTestCases@61df66b6]" started-at="2018-12-20T16:27:35Z" name="TC1" data-provider="TC" finished-at="2018-12-20T16:27:39Z" duration-ms="4442" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[TC1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Login to BPI]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[n]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[sara]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[password]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC1 -->
+      </class> <!-- com.neo.testcases.LoginTestCases -->
+    </test> <!-- comNeoBank -->
+  </suite> <!-- Default Suite -->
+</testng-results>
