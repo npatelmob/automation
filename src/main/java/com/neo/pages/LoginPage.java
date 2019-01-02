@@ -53,7 +53,7 @@ public class LoginPage extends SeleniumUtility {
     }
 
     public void validateLogin(){
-        test.fail()
+
 
     }
 

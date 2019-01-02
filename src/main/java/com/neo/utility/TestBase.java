@@ -73,24 +73,35 @@ public class TestBase {
     }
 
 
-    public void setupAndroid() {
+    public void setupCapabilties() {
         // Set device name using capabilities
         File appDir = new File(getAppPaths()[0]);
         File app = new File(appDir, getAppPaths()[1]);
+
         capabilities.setCapability("deviceName", deviceName);
-        capabilities.setCapability(CapabilityType.VERSION, versionInfo);
         capabilities.setCapability("platformName", platform);
-        capabilities.setCapability("appPackage", "npatel.neo.npatel");
         capabilities.setCapability("automationName", "uiautomator2");
-        capabilities.setCapability("appActivity", ".views.LoginActivity");
         capabilities.setCapability("noReset", noReset);
         capabilities.setCapability("app", app.getAbsolutePath());
-        capabilities.setCapability("nativeWebScreenshot", true);
+
+
+        if (platform.contains("android") || platform.contains("Android")) {
+            capabilities.setCapability(CapabilityType.VERSION, versionInfo);
+            capabilities.setCapability("appPackage", "npatel.neo.npatel");
+            capabilities.setCapability("appActivity", ".views.LoginActivity");
+            capabilities.setCapability("nativeWebScreenshot", true);
+        }
+        else if (platform.contains("iOS")) {
+            capabilities.setCapability("platformName", platform);
+            capabilities.setCapability("bundleid", "com.neo.NeoSampleWithPod");
+        }
+
+
     }
 
     public WebDriver initializeDriver() throws IOException {
         if (platform.contains("android") || platform.contains("Android")) {
-            setupAndroid();
+            setupCapabilties();
             //  driver = new AndroidDriver(new URL(serverUrl), capabilities);
             AndroidDriver driver1 = new AndroidDriver(new URL(serverUrl), capabilities);
             driver=driver1;
@@ -98,7 +109,7 @@ public class TestBase {
 
         } else if (platform.contains("iOS")) {
             IOSDriver driver1 = new IOSDriver(new URL(serverUrl), capabilities);
-           // driver = driver1;
+            driver = driver1;
         }
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         return this.driver;
@@ -130,7 +141,7 @@ public class TestBase {
     @BeforeSuite
     public void extent_reports() {
         String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss").format(new Date());
-        html = new ExtentHtmlReporter(System.getProperty("user.dir") + "/BPI_AppiumTesting/Android/Android_TestResults_"
+        html = new ExtentHtmlReporter(System.getProperty("user.dir") + "/NeoBank/Android/Android_TestResults_"
                 + timeStamp + ".html");
         extent = new ExtentReports();
         extent.attachReporter(html);
@@ -138,10 +149,10 @@ public class TestBase {
 
     @BeforeMethod(dependsOnMethods = "getDescription")
     public void initialize() throws Exception{
-        ValidateTestCase validateTestCase = new ValidateTestCase();
-        if(validateTestCase.isTestCaseNeedToTest(methodName)){
-            username=validateTestCase.getUserName(methodName);
-            password=validateTestCase.getPassword(methodName);
+        ValidateTestCaseAndGetData validateTestCaseAndGetData = new ValidateTestCaseAndGetData();
+        if(validateTestCaseAndGetData.isTestCaseNeedToTest(methodName)){
+            username= validateTestCaseAndGetData.getUserName(methodName);
+            password= validateTestCaseAndGetData.getPassword(methodName);
             initializeDriver();
         }
         else {
@@ -159,10 +170,10 @@ public class TestBase {
     public void getResult(ITestResult result) throws Exception {
 
         if (result.getStatus() == ITestResult.FAILURE) {
-            test.log(Status.FAIL, "Test Case Failed is " + result.getName());
-            test.log(Status.FAIL, "Test Case Failed is " + result.getThrowable());
+            test.log(Status.FAIL, result.getName()+"Test Case is Failed");
+           // test.log(Status.FAIL, "Test Case Failed is " + result.getThrowable());
         } else if (result.getStatus() == ITestResult.SKIP) {
-            test.log(Status.SKIP, "Test Case Skipped is " + result.getName());
+            test.log(Status.SKIP,result.getName()+"Test Case Skipped");
         }
 
        // driver.quit();

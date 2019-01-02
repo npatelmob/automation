@@ -1,5 +1,6 @@
 package com.neo.utility;
 
+import org.apache.poi.openxml4j.opc.OPCPackage;
 import org.apache.poi.ss.usermodel.*;
 
 import java.io.File;
@@ -10,23 +11,23 @@ import java.util.Iterator;
 import java.util.List;
 
 
-public class DataProvider extends TestBase{
+public class DataProvider extends TestBase {
 
     @org.testng.annotations.DataProvider(name = "TC")
     public static Object[][] getData() throws Exception {
 
         Class cls = Class.forName(classPath);
         String[] classData = classPath.split("\\.");
-        String className = classData[classData.length-1];
+        String className = classData[classData.length - 1];
 
-        Method[] methods= cls.getDeclaredMethods();
+        Method[] methods = cls.getDeclaredMethods();
         List<String> testMethodList = new ArrayList<>();
-        for(int i=0;i<methods.length;i++){
-            if(methods[i].getName().contains("TC")) {
+        for (int i = 0; i < methods.length; i++) {
+            if (methods[i].getName().contains("TC")) {
                 testMethodList.add(methods[i].getName());
             }
         }
-        File file = new File(System.getProperty("user.dir")+dataProvider);
+        File file = new File(System.getProperty("user.dir") + dataProvider);
         Workbook workbook = WorkbookFactory.create(file);
         workbook.getNumberOfSheets();
         String[] sheetList = new String[]{className};
@@ -83,17 +84,16 @@ public class DataProvider extends TestBase{
             tempcellValues.removeAll(tempcellValues);
             tempHeaderList.removeAll(tempHeaderList);
         }
-        int testCaseSize =0;
-        if(testMethodList.size()<hm.get("TCID").size()){
-            testCaseSize=testMethodList.size();
-        }
-        else {
-            testCaseSize=hm.get("TCID").size();
+        int testCaseSize = 0;
+        if (testMethodList.size() < hm.get("TCID").size()) {
+            testCaseSize = testMethodList.size();
+        } else {
+            testCaseSize = hm.get("TCID").size();
         }
 
         String[][] inputData = new String[testCaseSize][hm.keySet().size()];
         for (int i = 0; i < hm.get("TCID").size(); i++) {
-            if(StringOperations.isValueAvailableInList(hm.get("TCID").get(i),testMethodList)) {
+            if (StringOperations.isValueAvailableInList(hm.get("TCID").get(i), testMethodList)) {
                 for (int j = 0; j < hm.size(); j++) {
                     inputData[i][j] = hm.get(headerList.get(j)).get(i);
                 }

@@ -1,0 +1,8 @@
+<suite name="TestAutomationGuru">
+    <test name="1">
+        <parameter name="2" value="3"/>
+        <classes>
+            <class name="4"/>
+        </classes>
+    </test>
+</suite>

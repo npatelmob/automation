@@ -46,7 +46,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TC1 -->
-      </class> <!-- com.neo.testcases.LoginTestCases -->
+      </class> <!-- com.neo.testcases.LoginTestCasesAndGetDataAndGetData -->
     </test> <!-- comNeoBank -->
   </suite> <!-- Default Suite -->
 </testng-results>

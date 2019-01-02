@@ -1,0 +1,25 @@
+{
+    "development": {
+        "debugEnable": true
+    },
+    "backbase": {
+        "experience": "example",
+        "serverURL": "http://192.168.1.54:8080/gateway/",
+        "version": "6.0"
+    },
+    "security": {
+        "sslPinning": {
+            "checkChain": true
+        }
+    },
+    "template": {
+        "extraLibraries": [
+            "$(contextRoot)/static/items/vendor-bb-core-js/scripts/vendor-bb-core-js.js"
+        ],
+        "styles": [
+            "$(contextRoot)/static/items/theme-default/dist/styles/base.min.css",
+            "$(contextRoot)/static/items/theme-mobile-demo/css/global.css",
+            "$(contextRoot)/static/items/theme-mobile-demo/css/ios.css"
+        ]
+    }
+}

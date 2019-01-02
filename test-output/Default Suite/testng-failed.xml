@@ -9,7 +9,7 @@
           <include name="initialize"/>
           <include name="extent_reports"/>
         </methods>
-      </class> <!-- com.neo.testcases.LoginTestCases -->
+      </class> <!-- com.neo.testcases.LoginTestCasesAndGetDataAndGetData -->
     </classes>
   </test> <!-- comNeoBank(failed) -->
 </suite> <!-- Failed suite [Default Suite] -->
